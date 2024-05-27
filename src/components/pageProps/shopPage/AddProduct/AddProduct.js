@@ -106,7 +106,7 @@ export default function AddProduct({ category }) {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full py-2 px-4 bg--600 text-white rounded-md hover:bg-green-700 transition-colors duration-300 disabled:bg-gray-400 disabled:cursor-not-allowed"
+          className="w-full py-2 px-4 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors duration-300 disabled:bg-gray-400 disabled:cursor-not-allowed"
         >
           {isSubmitting ? "Submitting..." : "Submit"}
         </button>
