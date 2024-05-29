@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import "./ProductList.css";
 import { AppContext } from "../../../../App";
 import { Link } from "react-router-dom";
@@ -6,6 +6,7 @@ import { AddToCart } from "../AddToCart/AddToCart";
 import AddProduct from "../AddProduct/AddProduct";
 import DeleteProduct from "../DeleteProduct/DeleteProduct";
 import Product from "../../../home/Products/Product";
+import Pagination from "../../shopPage/Pagination"
 
 export default function ProductList({ category }) {
   const { products } = useContext(AppContext);
@@ -32,12 +33,19 @@ export default function ProductList({ category }) {
       </div>
     ));
 
+     const [itemsPerPage, setItemsPerPage] = useState(48);
+  const itemsPerPageFromBanner = (itemsPerPage) => {
+    setItemsPerPage(itemsPerPage);
+  };
+
   return (
     <div className="ProductList">
       
       {output}
 
       <AddProduct category={category} />
+      <div className="w-full mdl:w-[80%] lgl:w-[75%] h-full flex flex-col gap-10">
+        </div>
     </div>
   )
 }

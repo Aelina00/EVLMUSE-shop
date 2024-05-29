@@ -6,7 +6,7 @@ export default function ShopSideNav(props) {
   return (
     <>
       <div className="container">
-        <div className="Layout flex w-full flex flex-col gap-6">
+        <div className="Layout flex w-full flex flex-col gap-50">
           <aside>
             <CategoryList />
           </aside>

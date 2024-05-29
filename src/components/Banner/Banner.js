@@ -176,7 +176,7 @@ const Banner = () => {
   ];
   
   return (
-    <div className="w-full bg-white">
+    <div className="w-full bg-white mt-30" >
       <Slider {...settings}>
         {slides.map((slide, index) => (
           <CustomSlide key={index} {...slide} />

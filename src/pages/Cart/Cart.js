@@ -10,8 +10,10 @@ import ItemCard from "./ItemCard";
 const Cart = () => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.orebiReducer.products);
-  const [totalAmt, setTotalAmt] = useState("");
-  const [shippingCharge, setShippingCharge] = useState("");
+  const [totalAmt, setTotalAmt] = useState(0);
+  const [shippingCharge, setShippingCharge] = useState(0);
+  const [total, setTotal] = useState(0);
+
   useEffect(() => {
     let price = 0;
     products.map((item) => {
@@ -20,15 +22,22 @@ const Cart = () => {
     });
     setTotalAmt(price);
   }, [products]);
+
   useEffect(() => {
-    if (totalAmt <= 200) {
-      setShippingCharge(30);
-    } else if (totalAmt <= 400) {
-      setShippingCharge(25);
-    } else if (totalAmt > 401) {
-      setShippingCharge(20);
-    }
-  }, [totalAmt]);
+    // Define shipping charge based on total amount
+    const shippingCharges = [
+      { threshold: 200, charge: 30 },
+      { threshold: 400, charge: 25 },
+      { threshold: Infinity, charge: 20 }, // Default charge for amounts > 400
+    ];
+
+    const charge = shippingCharges.find(
+      (charge) => totalAmt <= charge.threshold
+    ).charge;
+
+    setShippingCharge(charge);
+    setTotal(totalAmt + shippingCharge);
+  }, [totalAmt]); 
   return (
     <div className="max-w-container mx-auto px-4">
       <Breadcrumbs title="Cart" />
@@ -73,7 +82,7 @@ const Cart = () => {
                 <p className="flex items-center justify-between border-[1px] border-gray-400 py-1.5 text-lg px-4 font-medium">
                   Total
                   <span className="font-bold tracking-wide text-lg font-titleFont">
-                    ${totalAmt + shippingCharge}
+                    ${total}
                   </span>
                 </p>
               </div>

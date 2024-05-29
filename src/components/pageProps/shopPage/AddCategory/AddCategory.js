@@ -2,6 +2,57 @@ import { useContext, useState } from "react";
 import { addDoc } from "firebase/firestore";
 import { categoryCollection } from "../../../../firebase";
 import { AppContext } from "../../../../App";
+import styled from "styled-components";
+
+const StyledForm = styled.form`
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  width: 100%;
+  background-color: #f8f8f2; // Бежевый цвет фона
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+`;
+
+const StyledInput = styled.input`
+  flex-grow: 1;
+  padding: 0.5rem 0.75rem;
+// Светло-серая рамка
+
+  outline: none;
+  font-size: 0.875rem; // 14px
+  font-family: 'Helvetica Neue', sans-serif;
+  color: #333; // Темно-серый цвет текста
+
+  &:focus {
+    border-color: #a6a69d; // Светло-коричневая рамка при фокусе
+    box-shadow: 0 0 0 2px rgba(166, 166, 157, 0.2); // Светло-коричневая тень при фокусе
+  }
+`;
+
+const StyledButton = styled.button`
+  margin-left: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #d4d4d0; // Светло-серый цвет фона
+  color: #333; // Темно-серый цвет текста
+  border-radius: 0.25rem;
+  font-size: 0.875rem; // 14px
+  font-family: 'Helvetica Neue', sans-serif;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #a6a69d; // Светло-коричневый цвет фона при наведении
+  }
+
+  &:disabled {
+    background-color: #e6e6e2; // Светло-бежевый цвет фона при отключении
+    color: #999; // Серый цвет текста при отключении
+    cursor: not-allowed;
+  }
+`;
 
 export default function AddCategory() {
   const [category, setCategory] = useState("");
@@ -34,22 +85,17 @@ export default function AddCategory() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex items-center mt-4">
-      <input
+    <StyledForm onSubmit={handleSubmit}>
+      <StyledInput
         type="text"
         placeholder="Category name"
         value={category}
         onChange={(e) => setCategory(e.target.value)}
-        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-beige-400"
         required
       />
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className="ml-2 px-4 py-2 bg-beige-400 text-gray-700 rounded-md hover:bg-beige-500 transition-colors duration-300 disabled:bg-gray-400 disabled:cursor-not-allowed"
-      >
+      <StyledButton type="submit" disabled={isSubmitting}>
         {isSubmitting ? "Adding..." : "+"}
-      </button>
-    </form>
+      </StyledButton>
+    </StyledForm>
   );
 }
