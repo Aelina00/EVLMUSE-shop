@@ -24,20 +24,16 @@ const Cart = () => {
   }, [products]);
 
   useEffect(() => {
-    // Define shipping charge based on total amount
-    const shippingCharges = [
-      { threshold: 200, charge: 30 },
-      { threshold: 400, charge: 25 },
-      { threshold: Infinity, charge: 20 }, // Default charge for amounts > 400
-    ];
-
-    const charge = shippingCharges.find(
-      (charge) => totalAmt <= charge.threshold
-    ).charge;
-
-    setShippingCharge(charge);
+    if (totalAmt <= 200) {
+      setShippingCharge(30);
+    } else if (totalAmt <= 400) {
+      setShippingCharge(25);
+    } else if (totalAmt > 401) {
+      setShippingCharge(20);
+    }
     setTotal(totalAmt + shippingCharge);
-  }, [totalAmt]); 
+  }, [totalAmt, shippingCharge]);
+
   return (
     <div className="max-w-container mx-auto px-4">
       <Breadcrumbs title="Cart" />

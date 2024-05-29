@@ -51,7 +51,7 @@ const NotFoundPage = () => {
       <rect x="0" y="0" width="100%" height="100%" fill="#000" />
 
       <g mask="url(#mask)">
-        <rect x="0" y="0" width="100%" height="100%" fill="#F15A2B" />
+        <rect x="0" y="0" width="100%" height="100%" fill="rgb(230, 225, 220)" />
         <g fill="#FFF" text-anchor="middle" font-family="Josefin Sans">
           <text x="50%" y="40%" fontSize="5rem">404</text>
           <text x="50%" y="40%" dy="50px" fontSize="2.5rem">
