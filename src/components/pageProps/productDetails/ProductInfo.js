@@ -105,7 +105,7 @@ const ProductInfo = ({ productInfo }) => {
             })
           )
         }
-        className="w-40 py-4 bg-rgb(230, 225, 220)-500 rounded-2px hover:bg-green-600 duration-300 hover:text-white text-lg font-titleFont"
+        className="w-40 py-4 bg-green-500 rounded-2px hover:bg-green-600 duration-300 hover:text-white text-lg font-titleFont"
       >
         Add to Cart
       </button>
