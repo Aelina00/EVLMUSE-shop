@@ -65,7 +65,7 @@ const Payment = () => {
     }
 
     // Валидация Expiry Date
-    if (!/^\d{2}\/\d{2}$/.test(formData.expiryDate)) {
+    if (!/^\\d{2}\/\\d{2}$/.test(formData.expiryDate)) {
       errors.expiryDate = 'Expiry date must be in MM/YY format';
     }
 
