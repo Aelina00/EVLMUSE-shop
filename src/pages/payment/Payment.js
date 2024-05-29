@@ -173,11 +173,11 @@ const Payment = () => {
 
       {/* Модальное окно */}
       {showModal ? (
-        <div className="fixed z-10 inset-0 overflow-y-auto">
-          <div className="flex items-center justify-center min-h-screen">
-            <div className="bg-white rounded-lg shadow-lg p-8">
-              <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Additional Information</h2>
-              <form onSubmit={handleSubmit}>
+        <div className="fixed z-10 inset-0 overflow-y-auto" onClick={() => setShowModal(false)}> {/* Добавлено onClick для закрытия */}
+        <div className="flex items-center justify-center min-h-screen" onClick={(e) => e.stopPropagation()}> {/*  onClick для предотвращения закрытия самого модального окна */}
+          <div className="bg-white rounded-lg shadow-lg p-8" onClick={(e) => e.stopPropagation()}> {/*  onClick для предотвращения закрытия самого модального окна */}
+            <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Additional Information</h2>
+            <form onSubmit={handleSubmit}>
                 <div className="mb-4 flex">
                   <div className="mr-4">
                     <label htmlFor="name" className="block text-gray-700 font-semibold mb-2">
