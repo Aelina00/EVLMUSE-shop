@@ -27,16 +27,20 @@ const Payment = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    const errors = validateForm();
-    if (Object.keys(errors).length === 0) {
-      // Здесь можно добавить логику для отправки данных на сервер
-      console.log(formData);
-      alert('We will process your order after payment verification');
-      setShowModal(false);
-    } else {
-      setErrors(errors);
-    }
+    e.preventDefault(); // Предотвращаем стандартное поведение формы
+    
+    // Проверка валидации (можно убрать, если не нужно):
+    // const errors = validateForm();
+    // if (Object.keys(errors).length === 0) {
+    //   // Валидация пройдена, можно отправлять данные
+    // } else {
+    //   setErrors(errors);
+    //   return; // Выходим из функции, если валидация не прошла
+    // }
+  
+    // Просто показываем уведомление
+    alert('We will process your order after payment verification');
+    setShowModal(false); // Закрываем модальное окно, если нужно
   };
 
   const validateForm = () => {
